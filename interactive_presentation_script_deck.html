@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Stationery Startup Presentation Deck</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Kanit', 'Poppins', sans-serif;
+        }
+        .slide-aspect {
+            aspect-ratio: 16 / 9;
+        }
+        .highlight-grammar {
+            background-color: #fef08a;
+            color: #854d0e;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .highlight-vocab {
+            background-color: #bbf7d0;
+            color: #166534;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .highlight-phrase {
+            background-color: #e0e7ff;
+            color: #3730a3;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-indigo-700 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-graduation-cap text-2xl text-yellow-300"></i>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">Campus Stationery Startup Deck</h1>
+                    <p class="text-xs text-indigo-200">สคริปต์พรีเซนต์ 7 คน & Canva Slide Templates</p>
+                </div>
+            </div>
+            <div class="flex space-x-2">
+                <button onclick="toggleScoreModal()" class="bg-yellow-400 hover:bg-yellow-300 text-indigo-900 font-bold px-3 py-1.5 rounded-lg text-sm flex items-center space-x-1.5 transition">
+                    <i class="fa-solid fa-award"></i>
+                    <span>เกณฑ์คะแนน (Score 2)</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- Sidebar Navigation: Speaker Selector -->
+        <aside class="lg:col-span-3 space-y-3">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-500 px-1">เลือกลำดับผู้พูด (Speaker 1 - 7)</h2>
+            <div id="speakerList" class="space-y-2">
+                <!-- Speaker Buttons generated dynamically -->
+            </div>
+
+            <div class="bg-gradient-to-br from-indigo-900 to-purple-900 text-white rounded-xl p-4 space-y-3 shadow-sm border border-indigo-700/50">
+                <div class="flex items-center space-x-2 text-yellow-300 font-bold text-sm">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>Gemini AI Power Tools</span>
+                </div>
+                <p class="text-xs text-indigo-200 leading-relaxed">
+                    ยกระดับการพรีเซนต์ด้วย AI Voice TTS, ปรับแต่งสคริปต์, เจนภาพสไลด์ และซ้อมตอบคำถาม Q&A
+                </p>
+                <button onclick="openQAModal()" class="w-full bg-yellow-400 hover:bg-yellow-300 text-indigo-950 font-bold py-2 rounded-lg text-xs flex items-center justify-center space-x-1.5 transition shadow">
+                    <i class="fa-solid fa-headset"></i>
+                    <span>ซ้อมตอบ Q&A กับ AI Coach</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Presentation Workspace -->
+        <section class="lg:col-span-9 space-y-6">
+
+            <!-- Canva Slide Preview Box -->
+            <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+                <div class="bg-slate-800 text-white px-4 py-2.5 flex justify-between items-center text-xs">
+                    <span id="slideHeaderBadge" class="font-semibold text-indigo-300">SLIDE 1 OF 7</span>
+                    <div class="flex items-center space-x-3">
+                        <button onclick="generateSlideImage()" class="hover:text-yellow-300 flex items-center space-x-1 transition text-purple-300">
+                            <i class="fa-solid fa-image"></i>
+                            <span>AI เจนภาพประกอบสไลด์</span>
+                        </button>
+                        <button onclick="copySlideText()" class="hover:text-yellow-300 flex items-center space-x-1 transition">
+                            <i class="fa-regular fa-copy"></i>
+                            <span>คัดลอกข้อความทำ Canva</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Simulated Slide Frame (16:9 Aspect) -->
+                <div id="slideFrame" class="p-6 md:p-8 bg-gradient-to-br from-indigo-900 via-indigo-800 to-slate-900 text-white slide-aspect flex flex-col justify-between relative overflow-hidden rounded-b-xl shadow-inner bg-cover bg-center">
+                    <!-- Background Overlay for dynamic contrast -->
+                    <div id="slideBgOverlay" class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-indigo-950/70 to-indigo-900/60 pointer-events-none"></div>
+
+                    <!-- Background Decorative Elements -->
+                    <div class="absolute -right-16 -top-16 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -left-16 -bottom-16 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <!-- Slide Content Top -->
+                    <div class="z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center space-x-2 text-yellow-400 font-semibold text-sm">
+                                <i id="slideCategoryIcon" class="fa-solid fa-store"></i>
+                                <span id="slideCategory">BUSINESS OVERVIEW</span>
+                            </div>
+                            <span id="aiImageBadge" class="hidden text-xs bg-yellow-400/20 text-yellow-300 border border-yellow-400/40 px-2.5 py-0.5 rounded-full font-medium">
+                                ✨ Gemini AI Artwork
+                            </span>
+                        </div>
+                        <h2 id="slideTitle" class="text-2xl md:text-4xl font-extrabold text-white tracking-wide leading-tight drop-shadow-sm">
+                            Campus Stationery Shop
+                        </h2>
+                        <p id="slideSubtitle" class="text-indigo-200 text-sm md:text-base mt-1 drop-shadow-sm">
+                            High-quality & Budget-friendly study tools for students
+                        </p>
+                    </div>
+
+                    <!-- Slide Bullet Points Container -->
+                    <div class="z-10 my-4 bg-slate-900/40 backdrop-blur-md p-4 md:p-6 rounded-xl border border-white/10 shadow-lg">
+                        <ul id="slideBullets" class="space-y-2 text-sm md:text-lg text-slate-100 font-medium">
+                            <!-- Bullets inserted dynamically -->
+                        </ul>
+                    </div>
+
+                    <!-- Slide Footer Tag -->
+                    <div class="z-10 flex justify-between items-center text-xs text-indigo-300 font-light border-t border-white/10 pt-3">
+                        <span id="speakerTag">Speaker 1: Welcome & Intro</span>
+                        <span>Student Startup Pitch 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Speaker Script & Grammar Highlights Card -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-100 pb-3">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-microphone-lines text-indigo-600 text-lg"></i>
+                        <h3 class="font-bold text-slate-800 text-lg">สคริปต์พูดนำเสนอ (Presentation Script)</h3>
+                    </div>
+                    
+                    <div class="flex flex-wrap items-center gap-2">
+                        <!-- TTS Voice Selector -->
+                        <div class="flex items-center bg-slate-100 border border-slate-200 rounded-lg px-2 py-1 text-xs">
+                            <i class="fa-solid fa-volume-high text-slate-500 mr-1.5"></i>
+                            <select id="ttsVoiceSelect" class="bg-transparent font-medium text-slate-700 outline-none cursor-pointer">
+                                <option value="Kore">Voice: Kore (Firm)</option>
+                                <option value="Puck">Voice: Puck (Upbeat)</option>
+                                <option value="Zephyr">Voice: Zephyr (Bright)</option>
+                                <option value="Fenrir">Voice: Fenrir (Excitable)</option>
+                            </select>
+                        </div>
+
+                        <!-- Read Aloud TTS Button -->
+                        <button id="ttsPlayBtn" onclick="speakScriptTTS()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center space-x-1.5 transition shadow-sm">
+                            <i class="fa-solid fa-play"></i>
+                            <span>ฟังเสียง AI อ่าน (TTS)</span>
+                        </button>
+
+                        <!-- AI Enhance Script Button -->
+                        <button onclick="toggleRewriteOptions()" class="bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center space-x-1.5 transition shadow-sm">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>AI ปรับแต่งสคริปต์</span>
+                        </button>
+
+                        <button onclick="copyScriptText()" class="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center space-x-1 border border-indigo-200 hover:border-indigo-400 px-3 py-1.5 rounded-lg transition">
+                            <i class="fa-regular fa-copy"></i>
+                            <span>ก๊อปปี้สคริปต์</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Rewrite Script Options Drawer (Hidden by default) -->
+                <div id="rewriteOptionsDrawer" class="hidden bg-purple-50 border border-purple-200 rounded-xl p-4 space-y-3">
+                    <div class="flex justify-between items-center text-xs font-bold text-purple-900">
+                        <span>✨ สั่ง Gemini ปรับแต่งสคริปต์สไตล์ต่างๆ:</span>
+                        <button onclick="toggleRewriteOptions()" class="text-purple-500 hover:text-purple-700">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                        <button onclick="enhanceScriptWithAI('energetic')" class="bg-white hover:bg-purple-100 text-purple-800 border border-purple-200 text-xs py-2 px-3 rounded-lg font-medium transition">
+                            🔥 Energetic & Confident
+                        </button>
+                        <button onclick="enhanceScriptWithAI('formal')" class="bg-white hover:bg-purple-100 text-purple-800 border border-purple-200 text-xs py-2 px-3 rounded-lg font-medium transition">
+                            💼 Professional Pitch
+                        </button>
+                        <button onclick="enhanceScriptWithAI('simplified')" class="bg-white hover:bg-purple-100 text-purple-800 border border-purple-200 text-xs py-2 px-3 rounded-lg font-medium transition">
+                            💡 Simple & Easy Clear
+                        </button>
+                        <button onclick="resetScriptToOriginal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs py-2 px-3 rounded-lg font-medium transition">
+                            🔄 คืนค่าสคริปต์เดิม
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Highlight Legend -->
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <span class="highlight-grammar"><i class="fa-solid fa-check text-xs mr-1"></i> Grammar Target</span>
+                    <span class="highlight-vocab"><i class="fa-solid fa-book text-xs mr-1"></i> Vocabulary Target</span>
+                    <span class="highlight-phrase"><i class="fa-solid fa-comments text-xs mr-1"></i> Key Presentation Phrase</span>
+                </div>
+
+                <!-- Script Text Box -->
+                <div id="scriptContent" class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-slate-700 leading-relaxed text-base font-normal min-h-[100px] relative">
+                    <!-- Script content inserted dynamically -->
+                </div>
+            </div>
+
+            <!-- Bottom Prev/Next Controls -->
+            <div class="flex justify-between items-center pt-2">
+                <button id="prevBtn" onclick="navigateSlide(-1)" class="bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 font-medium px-4 py-2 rounded-xl flex items-center space-x-2 transition shadow-sm">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>ผู้พูดคนก่อนหน้า</span>
+                </button>
+                <button id="nextBtn" onclick="navigateSlide(1)" class="bg-indigo-600 text-white hover:bg-indigo-700 font-medium px-4 py-2 rounded-xl flex items-center space-x-2 transition shadow-sm">
+                    <span>ผู้พูดคนถัดไป</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Q&A Practice Simulator Modal -->
+    <div id="qaModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 space-y-4 shadow-2xl border border-slate-200 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="toggleQAModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center space-x-3 text-indigo-700 border-b border-slate-100 pb-3">
+                <i class="fa-solid fa-graduation-cap text-2xl text-yellow-500"></i>
+                <div>
+                    <h3 class="font-bold text-lg">AI Pitch Practice & Q&A Coach</h3>
+                    <p class="text-xs text-slate-500">ฝึกตอบคำถามสดกับ AI กรรมการประเมินผล</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Question Box -->
+                <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-xl space-y-2">
+                    <div class="flex items-center justify-between text-xs font-bold text-indigo-800">
+                        <span>❓ คำถามสุ่มจากกรรมการ (Q&A Question):</span>
+                        <button onclick="generateQAQuestion()" class="text-indigo-600 hover:text-indigo-800 flex items-center space-x-1">
+                            <i class="fa-solid fa-rotate"></i>
+                            <span>สุ่มคำถามใหม่</span>
+                        </button>
+                    </div>
+                    <div id="qaQuestionBox" class="text-sm font-semibold text-indigo-950">
+                        กดปุ่มเพื่อเริ่มสร้างคำถาม Q&A จากเนื้อหาสไลด์ปัจจุบัน...
+                    </div>
+                </div>
+
+                <!-- User Answer Input -->
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-bold text-slate-700">พิมพ์คำตอบของคุณ (ภาษาอังกฤษ):</label>
+                    <textarea id="qaUserAnswer" rows="3" class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="e.g., We plan to use TikTok videos and student reward cards to attract buyers..."></textarea>
+                </div>
+
+                <button id="qaSubmitBtn" onclick="submitQAAnswer()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 rounded-xl text-sm flex items-center justify-center space-x-2 transition shadow">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>ส่งคำตอบให้ AI ช่วยตรวจ & ให้คำแนะนำ</span>
+                </button>
+
+                <!-- Feedback Result Box -->
+                <div id="qaFeedbackBox" class="hidden bg-slate-50 border border-slate-200 p-4 rounded-xl text-xs space-y-2 leading-relaxed">
+                    <!-- Dynamic feedback content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API Configuration setup
+        const getApiKey = () => ""; // Canvas will provide key at runtime
+
+        // Audio Player state
+        let currentAudioSource = null;
+
+        // Base 7 Speakers presentation scripts storage
+        let originalScripts = [];
+
+        // Convert PCM 16-bit Base64 Audio to Web Audio API Playback
+        async function playPcm16Audio(base64Data, sampleRate = 24000) {
+            try {
+                if (currentAudioSource) {
+                    currentAudioSource.stop();
+                }
+
+                const binary = atob(base64Data);
+                const len = binary.length;
+                const bytes = new Uint8Array(len);
+                for (let i = 0; i < len; i++) {
+                    bytes[i] = binary.charCodeAt(i);
+                }
+                const pcm16 = new Int16Array(bytes.buffer);
+                
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate });
+                const buffer = audioCtx.createBuffer(1, pcm16.length, sampleRate);
+                const channelData = buffer.getChannelData(0);
+                
+                for (let i = 0; i < pcm16.length; i++) {
+                    channelData[i] = pcm16[i] / 32768.0;
+                }
+                
+                const source = audioCtx.createBufferSource();
+                source.buffer = buffer;
+                source.connect(audioCtx.destination);
+                source.start(0);
+                currentAudioSource = source;
+                
+                source.onended = () => {
+                    resetTTSButtonState();
+                };
+            } catch (err) {
+                console.error("Audio playback error:", err);
+                resetTTSButtonState();
+            }
+        }
+
+        function resetTTSButtonState() {
+            const btn = document.getElementById('ttsPlayBtn');
+            if (btn) {
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fa-solid fa-play"></i><span>ฟังเสียง AI อ่าน (TTS)</span>`;
+            }
+        }
+
+        async function speakScriptTTS() {
+            const btn = document.getElementById('ttsPlayBtn');
+            const data = presentationData[currentSlideIndex];
+            const voice = document.getElementById('ttsVoiceSelect').value;
+
+            // Strip HTML highlight tags for TTS text
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = data.script;
+            const cleanText = tempDiv.textContent || tempDiv.innerText;
+
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i><span>กำลังสร้างเสียง...</span>`;
+
+            try {
+                const apiKey = getApiKey();
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{
+                        parts: [{ text: `Say clearly: ${cleanText}` }]
+                    }],
+                    generationConfig: {
+                        responseModalities: ["AUDIO"],
+                        speechConfig: {
+                            voiceConfig: {
+                                prebuiltVoiceConfig: { voiceName: voice }
+                            }
+                        }
+                    }
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const part = result?.candidates?.[0]?.content?.parts?.[0];
+                const audioData = part?.inlineData?.data;
+                const mimeType = part?.inlineData?.mimeType || "";
+
+                if (audioData) {
+                    let sampleRate = 24000;
+                    const match = mimeType.match(/rate=(\d+)/);
+                    if (match) {
+                        sampleRate = parseInt(match[1], 10);
+                    }
+                    btn.innerHTML = `<i class="fa-solid fa-volume-high fa-beat"></i><span>กำลังเล่นเสียง...</span>`;
+                    playPcm16Audio(audioData, sampleRate);
+                } else {
+                    alert("ไม่สามารถสร้างเสียงได้ในขณะนี้ กรุณาลองใหม่อีกครั้ง");
+                    resetTTSButtonState();
+                }
+            } catch (err) {
+                console.error("TTS fetch failed:", err);
+                alert("เกิดข้อผิดพลาดในการเชื่อมต่อกับ Gemini TTS");
+                resetTTSButtonState();
+            }
+        }
+
+        async function generateSlideImage() {
+            const data = presentationData[currentSlideIndex];
+            const slideFrame = document.getElementById('slideFrame');
+            const aiBadge = document.getElementById('aiImageBadge');
+
+            const originalContent = slideFrame.innerHTML;
+            const prompt = `A clean modern aesthetic 3D illustration banner for presentation: ${data.title}, ${data.subtitle}, cute stationery, minimal clean background, vibrant pastel colors, high resolution, 16:9 wallpaper concept.`;
+
+            // UI loading overlay
+            aiBadge.classList.remove('hidden');
+            aiBadge.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-1"></i> กำลังเจนรูปด้วย Gemini AI...`;
+
+            try {
+                const apiKey = getApiKey();
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{
+                        role: 'user',
+                        parts: [{ text: prompt }]
+                    }],
+                    generationConfig: {
+                        responseModalities: ['IMAGE'],
+                        imageConfig: { aspectRatio: "16:9" }
+                    }
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const part = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData);
+
+                if (part && part.inlineData) {
+                    const imageUrl = `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`;
+                    slideFrame.style.backgroundImage = `url('${imageUrl}')`;
+                    aiBadge.innerHTML = `✨ Gemini AI Artwork`;
+                } else {
+                    alert("ไม่สามารถสร้างรูปภาพได้ กรุณาลองใหม่อีกครั้ง");
+                    aiBadge.classList.add('hidden');
+                }
+            } catch (err) {
+                console.error("Image gen error:", err);
+                alert("เกิดข้อผิดพลาดในการเชื่อมต่อกับ Gemini Image API");
+                aiBadge.classList.add('hidden');
+            }
+        }
+
+        function toggleRewriteOptions() {
+            const drawer = document.getElementById('rewriteOptionsDrawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        async function enhanceScriptWithAI(style) {
+            const scriptBox = document.getElementById('scriptContent');
+            const data = presentationData[currentSlideIndex];
+            
+            scriptBox.innerHTML = `
+                <div class="flex items-center space-x-2 text-purple-600 font-medium py-4">
+                    <i class="fa-solid fa-wand-magic-sparkles fa-spin text-lg"></i>
+                    <span>Gemini กำลังเรียบเรียงสคริปต์สไตล์ ${style} ใหม่ให้คุณ...</span>
+                </div>
+            `;
+
+            try {
+                const apiKey = getApiKey();
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+                const systemPrompt = `You are a professional presentation coach. Rephrase the speaker's English presentation script to be ${style}. Keep it concise (approx 3-4 sentences). 
+                IMPORTANT: Wrap grammar structures in <span class="highlight-grammar">...</span>, target vocabulary in <span class="highlight-vocab">...</span>, and presentation phrases in <span class="highlight-phrase">...</span>. Keep HTML tags intact in output.`;
+
+                const userQuery = `Current Script: "${data.script}"\nRephrase in ${style} tone. Return ONLY the HTML formatted text script.`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] }
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const generatedText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (generatedText) {
+                    presentationData[currentSlideIndex].script = generatedText;
+                    scriptBox.innerHTML = generatedText;
+                } else {
+                    resetScriptToOriginal();
+                }
+            } catch (err) {
+                console.error("Script rewrite error:", err);
+                resetScriptToOriginal();
+            }
+        }
+
+        function resetScriptToOriginal() {
+            if (originalScripts[currentSlideIndex]) {
+                presentationData[currentSlideIndex].script = originalScripts[currentSlideIndex];
+                document.getElementById('scriptContent').innerHTML = originalScripts[currentSlideIndex];
+            }
+        }
+
+        function toggleQAModal() {
+            const modal = document.getElementById('qaModal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                generateQAQuestion();
+            }
+        }
+
+        function openQAModal() {
+            toggleQAModal();
+        }
+
+        async function generateQAQuestion() {
+            const questionBox = document.getElementById('qaQuestionBox');
+            const data = presentationData[currentSlideIndex];
+            
+            questionBox.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-2"></i>Gemini กำลังคิดคำถามสำหรับสไลด์ "${data.title}"...`;
+            document.getElementById('qaFeedbackBox').classList.add('hidden');
+
+            try {
+                const apiKey = getApiKey();
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+                const userPrompt = `Generate 1 realistic, challenging Q&A question that a judge or teacher would ask after listening to this presentation slide:
+                Topic: ${data.title}
+                Bullet points: ${data.bullets.join(", ")}
+                Return ONLY the question in clear English.`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userPrompt }] }]
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+                questionBox.innerText = text || "What makes your campus stationery shop different from traditional bookstores?";
+            } catch (err) {
+                questionBox.innerText = "What is your main marketing strategy to reach university students?";
+            }
+        }
+
+        async function submitQAAnswer() {
+            const answerInput = document.getElementById('qaUserAnswer');
+            const questionText = document.getElementById('qaQuestionBox').innerText;
+            const feedbackBox = document.getElementById('qaFeedbackBox');
+            const submitBtn = document.getElementById('qaSubmitBtn');
+
+            if (!answerInput.value.trim()) {
+                alert("กรุณาพิมพ์คำตอบก่อนส่งตรวจครับ");
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i><span>กำลังวิเคราะห์คำตอบ...</span>`;
+
+            try {
+                const apiKey = getApiKey();
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+                const prompt = `Evaluate the student's response to this Q&A pitch question:
+                Question: "${questionText}"
+                Student Answer: "${answerInput.value.trim()}"
+                
+                Provide feedback in Thai in 3 bullet points:
+                1. 🌟 ข้อดีของคำตอบ
+                2. ✏️ คำแนะนำเพิ่มเติมหรือการปรับปรุงภาษาอังกฤษ
+                3. 💡 ตัวอย่างคำตอบระดับเกียรตินิยม (Sample Answer)`;
+
+                const payload = { contents: [{ parts: [{ text: prompt }] }] };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                feedbackBox.innerHTML = `<div class="font-bold text-slate-800 mb-1">ผลการประเมินจาก Gemini AI Coach:</div>${text.replace(/\n/g, '<br>')}`;
+                feedbackBox.classList.remove('hidden');
+            } catch (err) {
+                alert("เกิดข้อผิดพลาดในการประเมินคำตอบ");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i><span>ส่งคำตอบให้ AI ช่วยตรวจ & ให้คำแนะนำ</span>`;
+            }
+        }
+
+        // Initialize original scripts backup on load
+        window.addEventListener('load', () => {
+            originalScripts = presentationData.map(item => item.script);
+        });
+    </script>
+</body>
+</html>
